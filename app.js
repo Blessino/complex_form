@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  res.render('form');
+  res.render('form', { error: null });
 });
 
 app.post('/submit', (req, res) => {

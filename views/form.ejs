@@ -5,19 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Form</title>
 </head>
-<body>
-    <h1>Submit Your Info</h1>
-    <form action="/submit" method="POST">
+<body style="font-family: sans-serif; padding: 20px;  background: #f0f0f0;  ">
+    <!-- Head Line -->
+    <h1 style="color: #333; display: flex; justify-content: center; align-items: center; ">Submit Your Info</h1>
+    <% if (error) {%>
+        <p style="color: #ff0000;"><%= error %></p>
+    <%}
+    %>
+    <!-- Form -->
+     <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; ;">
+     <form action="/submit" method="POST" onsubmit="return formValidation()" style=" background: #fff; padding: 50px; border-radius: 15px;">
+        <!--First Name -->
         <label>First Name:</label>
-        <input type="text" name="first" required>
+        <input type="text" name="first" id="'first" style="margin: 5px 15px; padding: 5px;" required>
         <br>
+        <!--Last Name -->
         <label>Last Name:</label>
-        <input type="text" name="last" required>
+        <input type="text" name="last" id="last" style="margin: 5px 15px; padding: 5px;" required>
         <br>
+        <!-- Age -->
+        <label>Age:</label>
+        <input type="number" name="age" id="age" style="margin: 5px 15px; padding: 5px;" required>
+        <br>
+        <!-- Email -->
         <label>Email:</label>
-        <input type="email" name="email" required>
+        <input type="email" name="email" id="email" style="margin: 5px 15px; padding: 5px;" required>
         <br>
-        <button type="submit">Submit</button>
-    </form>
+        <!--Phone Number -->
+        <label>Phone Number:</label>
+        <input type="number" name="Phone" id="Phone" style="margin: 5px 15px; padding: 5px;" required>
+        <br>
+        <!-- Submit Button -->
+        <button type="submit" style=" margin-top: 15px; padding: 10px 15px; background-color: #006cdf; color: white; border: none;border-radius: 5px;" onmouseover="this.style.background='#007bff'"  onmouseout="this.style.background='#006cdf'">Submit</button>
+     </form>
+    </div>
+    <script>
+        //form validation
+        function formValidation() {
+            const age = document.getElementById('age').value;
+            const phone = document.getElementById('phone').value;
+            const validNumber = /^(?:\+91|91)?[6-9]\d{9}$/;
+            //Age is requied to be between 1 - 120
+            if (age < 1 || age > 120) {
+                alert('Age must be between 1 and 120');
+                return false;
+            }
+            //Phone number need to be valid 
+            if (phone !== validNumber ) {
+                alert('phone number not valid');
+                return false;
+            }
+            return true;
+        }
+    </script>
 </body>
 </html>
