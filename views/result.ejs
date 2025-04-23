@@ -5,10 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submission Result</title>
 </head>
-<body>
+<body style="font-family: sans-serif; padding: 20px;">
     <h1>Thank You! <%= first %></h1>
     <p><strong>Name:</strong> <%= first %> <%= last %></p>
     <p><strong>Email:</strong> <%= email %></p>
+
+    <h3>All Submissions:</h3>
+    <ul>
+        <% Submissions.forEach(user => { %>
+            <li><strong><%= user.name%></strong> (Email: <%= user.email%>, Age: <%= user.age%>, phone: <%= phone%>)</li>
+        <%})%>
+    </ul>
+
     <a href="/">Back to form</a>
 </body>
 </html>
