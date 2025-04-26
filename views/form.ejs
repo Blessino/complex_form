@@ -17,7 +17,7 @@
      <form action="/submit" method="POST" onsubmit="return formValidation()" style=" background: #fff; padding: 50px; border-radius: 15px;">
         <!--First Name -->
         <label>First Name:</label>
-        <input type="text" name="first" id="'first" style="margin: 5px 15px; padding: 5px;" required>
+        <input type="text" name="first" id="first" style="margin: 5px 15px; padding: 5px;" required>
         <br>
         <!--Last Name -->
         <label>Last Name:</label>
@@ -33,7 +33,7 @@
         <br>
         <!--Phone Number -->
         <label>Phone Number:</label>
-        <input type="number" name="Phone" id="Phone" style="margin: 5px 15px; padding: 5px;" required>
+        <input type="number" name="phone" id="phone" style="margin: 5px 15px; padding: 5px;" required>
         <br>
         <!-- Submit Button -->
         <button type="submit" style=" margin-top: 15px; padding: 10px 15px; background-color: #006cdf; color: white; border: none;border-radius: 5px;" onmouseover="this.style.background='#007bff'"  onmouseout="this.style.background='#006cdf'">Submit</button>
@@ -51,8 +51,8 @@
                 return false;
             }
             //Phone number need to be valid 
-            if (phone !== validNumber ) {
-                alert('phone number not valid');
+            if (!validNumber.test(phone) ) {
+                alert('phone number must start with +91 or 91 and contained 10 digits');
                 return false;
             }
             return true;
